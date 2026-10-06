@@ -7,20 +7,21 @@ const SALTROUNDS = 10;
 
 async function main() {
 
-  const password = "print(medocbills$$$)";
+  const password = env.ADMIN_PASSWORD;
+  const email = env.ADMIN_EMAIL;
   const hashPassword = await bcrypt.hash(password, SALTROUNDS)
 
   await prisma.admin.create({
     data: {
-      name: "Syed Muhammad Uzair",
-      email: "smuzair13cse@gmail.com",
+      name: "Younas Khan",
+      email: email,
       password: hashPassword,
     },
   });
   console.log("Admin created");
 
   // await prisma.admin.delete({
-  //   where: {email: "smuzair13cse@gmail.com"},
+  //   where: {email: email},
   // })
 
   // console.log("Admin Deleted!")
